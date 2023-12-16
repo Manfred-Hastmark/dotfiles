@@ -53,7 +53,6 @@ return packer.startup(function(use)
   use("rhysd/vim-clang-format")
 
   use("NvChad/nvterm")
-
   use {'neoclide/coc.nvim', branch = 'release'}
 
   if packer_bootstrap then
