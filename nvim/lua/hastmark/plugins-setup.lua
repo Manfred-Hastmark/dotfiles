@@ -55,6 +55,16 @@ return packer.startup(function(use)
   use("NvChad/nvterm")
   use {'neoclide/coc.nvim', branch = 'release'}
 
+  use({
+  	"Pocco81/auto-save.nvim",
+	  config = function()
+		    require("auto-save").setup {
+		  }
+	  end,
+  })
+
+  use("m4xshen/autoclose.nvim")
+
   if packer_bootstrap then
     require("packer").sync()
   end

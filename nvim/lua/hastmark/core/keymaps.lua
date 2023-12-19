@@ -18,8 +18,15 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+keymap.set("n", "<leader>FF", ":Telescope live_grep<CR>")
 
 keymap.set("n", "<leader>s", ":ClangFormat<CR>")
+vim.api.nvim_set_keymap("n", "<leader>n", ":ASToggle<CR>", {})
+
+keymap.set("n", "<leader>tn", ":tabnew<CR>")
+keymap.set("n", "<leader>t<leader>", ":tabnext<CR>")
+keymap.set("n", "<leader>tm", ":tabmove<CR>")
+keymap.set("n", "<leader>tc", ":tabclose<CR>")
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
