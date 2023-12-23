@@ -10,7 +10,13 @@ keymap.set("n", "<S-TAB>", ":bp<CR>")
 keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "x", '"_x')
+
 keymap.set("n", "<leader>sp", "<C-w>v")
+keymap.set("n", "<C-h>", "<C-w>h")
+keymap.set("n", "<C-l>", "<C-w>l")
+keymap.set("n", "<C-j>", "<C-w>j")
+keymap.set("n", "<C-k>", "<C-w>k")
+
 keymap.set("n", "<leader>sd", ":close<CR>")
 keymap.set("n", "<leader>a", function() vim.lsp.buf.format({async = true}) end)
 
