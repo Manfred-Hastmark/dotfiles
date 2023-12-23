@@ -4,29 +4,15 @@ local keymap = vim.keymap
 
 -- general keymaps
 
+keymap.set("n", "<leader>w", ":bd<CR>")
+keymap.set("n", "<TAB>", ":bn<CR>")
+keymap.set("n", "<S-TAB>", ":bp<CR>")
 keymap.set("i", "jk", "<ESC>")
-
 keymap.set("n", "<leader>nh", ":nohl<CR>")
-
 keymap.set("n", "x", '"_x')
-
 keymap.set("n", "<leader>sp", "<C-w>v")
 keymap.set("n", "<leader>sd", ":close<CR>")
-
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
-
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
-
-keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-keymap.set("n", "<leader>FF", ":Telescope live_grep<CR>")
-
-keymap.set("n", "<leader>s", ":ClangFormat<CR>")
-vim.api.nvim_set_keymap("n", "<leader>n", ":ASToggle<CR>", {})
-
-keymap.set("n", "<leader>tn", ":tabnew<CR>")
-keymap.set("n", "<leader>t<leader>", ":tabnext<CR>")
-keymap.set("n", "<leader>tm", ":tabmove<CR>")
-keymap.set("n", "<leader>tc", ":tabclose<CR>")
+keymap.set("n", "<leader>a", function() vim.lsp.buf.format({async = true}) end)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -58,15 +44,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
-
-local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end

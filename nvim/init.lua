@@ -1,12 +1,18 @@
-require("hastmark.core.options")
-require("hastmark.core.keymaps")
-require("hastmark.core.colorscheme")
-require("hastmark.plugins-setup")
-require("hastmark.plugins.comment")
-require("hastmark.plugins.nvim-tree")
-require("hastmark.plugins.lualine")
-require("hastmark.plugins.telescope")
-require("hastmark.plugins.lspconfig")
-require("hastmark.plugins.nvterm")
-require("hastmark.plugins.autoclose")
-vim.api.nvim_command('inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+
+vim.opt.rtp:prepend(lazypath)
+vim.opt.termguicolors = true
+
+require("core.keymaps")
+require("core.options")
+require('lazy').setup("plugins")
