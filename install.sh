@@ -85,3 +85,8 @@ create_symlink "${dir}/i3status" "$HOME/.config/i3status"
 
 # Wezterm
 create_symlink "${dir}/wezterm" "$HOME/.config/wezterm"
+
+# Zsh
+clone_repository "https://github.com/ohmyzsh/ohmyzsh" "$HOME/.oh-my-zsh"
+create_symlink "${dir}/zsh/.zshrc" "$HOME/.zshrc"
+create_symlink "${dir}/zsh/custom.zsh-theme" "$HOME/.oh-my-zsh/themes/custom.zsh-theme"
