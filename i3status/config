@@ -1,0 +1,79 @@
+general {
+  output_format = "i3bar"
+  colors = true
+  color_good = "#a6e3a1"
+  color_degraded = "#f9e2af"
+  color_bad = "#f38ba8"
+}
+
+order += "wireless wlp4s0"
+order += "ethernet eth0"
+order += "battery 0"
+order += "battery 1"
+order += "disk /"
+order += "memory"
+order += "load"
+order += "tztime local"
+order += "volume master"
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted" 
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+wireless wlp4s0 {
+        format_up = "W: (%quality at %essid, %bitrate) %ip"
+        format_down = "W: down"
+}
+
+ethernet eth0 {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+battery 0 {
+        format = "%status %percentage"
+        format_down = "No battery0"
+        status_chr = "CHR0"
+        status_bat = "BAT0"
+        status_unk = "UNK0"
+        status_full = "FULL0"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+battery 1 {
+        format = "%status %percentage"
+        format_down = "No battery1"
+        status_chr = "CHR1"
+        status_bat = "BAT1"
+        status_unk = "UNK1"
+        status_full = "FULL1"
+        path = "/sys/class/power_supply/BAT1/uevent"
+        low_threshold = 10
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+load {
+        format = "%5min"
+}
+
+memory {
+        format = "%used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+disk "/" {
+        format = "%free"
+}
+
+read_file uptime {
+        path = "/proc/uptime"
+}
