@@ -7,5 +7,12 @@ as my terminal multiplexer I use [tmux](https://github.com/tmux/tmux/wiki) and m
 My preferred editor is [neovim](https://neovim.io/) and I use [lazyvim](https://www.lazyvim.org/) as my plugin manager. In general
 I preffer quite a simple setup.
 
+
 ## Installing
 
+For convenience, I have created a bash script to install all dependencies and create all the necessary
+symlinks to everything, hopefully it should just be a one liner to install my dotfiles.
+
+```bash
+bash install.sh
+```
