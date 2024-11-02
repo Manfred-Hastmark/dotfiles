@@ -7,6 +7,8 @@ as my terminal multiplexer I use [tmux](https://github.com/tmux/tmux/wiki) and m
 My preferred editor is [neovim](https://neovim.io/) and I use [lazyvim](https://www.lazyvim.org/) as my plugin manager. In general
 I preffer quite a simple setup.
 
+![Config pic](docs/configPic.png)
+
 ## Dependencies
 
 ### Updating apt
