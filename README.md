@@ -14,5 +14,5 @@ For convenience, I have created a bash script to install all dependencies and cr
 symlinks to everything, hopefully it should just be a one liner to install my dotfiles.
 
 ```bash
-bash install.sh
+bash install.sh [-Y]
 ```

@@ -74,4 +74,14 @@ create_symlink "${dir}/tmux" "$HOME/.config/tmux"
 
 # Neovim
 create_symlink "${dir}/nvim" "$HOME/.config/nvim"
-reate_symlink "${dir}/nvim" "$HOME/.config/nvim"
+create_symlink "${dir}/nvim" "$HOME/.config/nvim"
+
+# Clangd
+create_symlink "${dir}/clangd" "$HOME/.config/clangd"
+
+# i3
+create_symlink "${dir}/i3" "$HOME/.config/i3"
+create_symlink "${dir}/i3status" "$HOME/.config/i3status"
+
+# Wezterm
+create_symlink "${dir}/wezterm" "$HOME/.config/wezterm"
