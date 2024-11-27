@@ -1,5 +1,5 @@
 CompileFlags:
-  Add: [-std=c++20, -Wpedantic, -Wall, -Wextra, -Werror, -Wshadow, -Wdeprecated]
+  Add: [-std=c++20, -Wpedantic, -Wall, -Wextra, -Werror, -Wshadow, -Wdeprecated, -Wconversion]
 
 Diagnostics:
   ClangTidy:

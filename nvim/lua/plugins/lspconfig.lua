@@ -28,7 +28,7 @@ return {
         -- Format on save for C/C++
         vim.api.nvim_create_augroup('AutoFormatting', {})
         vim.api.nvim_create_autocmd({'TextChanged', 'InsertLeave'}, {
-            pattern = {"*.cpp", "*.cc", "*.c", "*.hpp", "*.hh", "*.h", "*.tpp", "*CMake*"},
+            pattern = {"*.cpp", "*.cc", "*.c", "*.hpp", "*.hh", "*.h", "*.tpp", "*CMake*", "*.cmake"},
             group = 'AutoFormatting',
             callback = function()
                 vim.lsp.buf.format({ async = false })

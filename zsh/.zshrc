@@ -84,8 +84,14 @@ alias restore='git diff --name-only | fzf | xargs git restore'
 alias diff='git diff --name-only | fzf | xargs git diff'
 alias nf='cd /home/hastmark/Documents/CFS/software/node-firmware'
 alias cl='cd /home/hastmark/Documents/CFS/software/cfs-imgui-client'
+alias fcd='cd $(fzf-folder)'
 
-PATH="$PATH:/home/hastmark/Documents/CFS/software/node-patcher/bin"
+alias prep='git restore . --patch'
+alias merge='git mergetool --tool=nvimdiff'
+
+PATH="$PATH:/home/hastmark/Documents/CFS/software/node-patcher/bin:/home/hastmark/Documents/projects/fzf-folder/out"
 export PATH="$PATH:/home/hastmark/.local/bin"
 export PATH="$PATH:/home/hastmark/bin"
 export NVIM_NODE_HOST="npm"
+export PATH="/home/hastmark/.pixi/bin:$PATH"
+eval "$(pixi completion --shell zsh)"
