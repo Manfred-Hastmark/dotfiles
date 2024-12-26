@@ -17,10 +17,40 @@ return {
                 "--pretty"
             },
         }
-
-        lspconfig.pyright.setup{
-            capabilities = capabilities,
+        
+        lspconfig.textlsp.setup{
+            cmd = { "textlsp" },
+            filetypes = { "tex" },
+            settings = {
+                textLSP = {
+                    analysers = {
+                        languagetool = {
+                            check_text = {
+                                on_change = true,
+                            },
+                            enabled = true,
+                        },
+                    },
+                },
+            },
         }
+
+        lspconfig.pylsp.setup{
+          settings = {
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  ignore = {'W391'},
+                  maxLineLength = 100
+                }
+              }
+            }
+          }
+        }
+        lspconfig.zls.setup{}
+        lspconfig.gopls.setup{}
+
+        lspconfig.texlab.setup{}
 
         lspconfig.cmake.setup{}
 

@@ -57,6 +57,8 @@ bindsym $mod+Return exec wezterm
 # start a terminal
 bindsym $mod+p exec flameshot gui
 
+bindsym $mod+o exec gromit-mpx
+
 # Start webbrowser
 bindsym $mod+m exec qutebrowser
 

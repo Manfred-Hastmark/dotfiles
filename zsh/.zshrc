@@ -89,9 +89,13 @@ alias fcd='cd $(fzf-folder)'
 alias prep='git restore . --patch'
 alias merge='git mergetool --tool=nvimdiff'
 
-PATH="$PATH:/home/hastmark/Documents/CFS/software/node-patcher/bin:/home/hastmark/Documents/projects/fzf-folder/out"
+PATH="$PATH:/home/hastmark/Documents/CFS/software/node-patcher/bin:/home/hastmark/Documents/projects/fzf-folder/out/src"
 export PATH="$PATH:/home/hastmark/.local/bin"
 export PATH="$PATH:/home/hastmark/bin"
+export PATH=$PATH:$(go env GOPATH)/bin
 export NVIM_NODE_HOST="npm"
 export PATH="/home/hastmark/.pixi/bin:$PATH"
+export PATH="/home/hastmark/Documents/tools/zig/compiler:$PATH"
+export PATH="/home/hastmark/Documents/tools/zig/zls/zig-out/bin:$PATH"
+export PATH="/home/hastmark/.cargo/bin:$PATH"
 eval "$(pixi completion --shell zsh)"
