@@ -31,8 +31,19 @@ create_symlink() {
         return 0
       fi
     fi
+  elif [ -d "$link_path" ]; then
+    # If the target is a directory, ask if they want to remove it and replace it with a symlink
+    read -p "A directory already exists at '$link_path'. Do you want to remove the directory and replace it with a symlink? (y/n): " choice
+    if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
+      rm -rf "$link_path"  # Remove the directory
+      echo "Deleted the existing directory at '$link_path'."
+    else
+      echo "Keeping the existing directory. No changes made."
+      return 0
+    fi
   elif [ -e "$link_path" ]; then
-    echo "A file or directory (not a symlink) already exists at '$link_path'. Please remove it manually."
+    # If there's a regular file or something else at the symlink path, we ask for confirmation
+    echo "A file or other type of object already exists at '$link_path'. Please remove it manually."
     return 1
   fi
 
@@ -40,6 +51,7 @@ create_symlink() {
   ln -s "$target_dir" "$link_path"
   echo "Created a new symlink at '$link_path'."
 }
+
 
 # Function to clone a Git repository with checks
 clone_repository() {
