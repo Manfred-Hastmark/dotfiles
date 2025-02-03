@@ -99,3 +99,5 @@ export PATH="/home/hastmark/Documents/tools/zig/compiler:$PATH"
 export PATH="/home/hastmark/Documents/tools/zig/zls/zig-out/bin:$PATH"
 export PATH="/home/hastmark/.cargo/bin:$PATH"
 eval "$(pixi completion --shell zsh)"
+
+fortune | cowsay
