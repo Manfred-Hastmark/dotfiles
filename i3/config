@@ -11,6 +11,7 @@
 
 set $mod Mod4
 
+set $BROWSER /usr/bin/chromium
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -23,6 +24,9 @@ font pango:monospace 8
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
+
+# Set background image
+exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/forrest.png
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -44,6 +48,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -57,16 +64,19 @@ bindsym $mod+Return exec wezterm
 # start a terminal
 bindsym $mod+p exec flameshot gui
 
+# Start spotify
+bindsym $mod+s exec spotify
+
 bindsym $mod+o exec gromit-mpx
 
 # Start webbrowser
-bindsym $mod+m exec qutebrowser
+bindsym $mod+m exec chromium
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10' -p 'dmenu prompt &gt;'"
+bindsym $mod+d exec "dmenu_run -nf '#cdd6f4' -nb '#1e1e2e' -sb '#b4befe' -sf '#000000' -fn 'RobotoMono NerdFont-9' -p 'open:'"
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -108,7 +118,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
