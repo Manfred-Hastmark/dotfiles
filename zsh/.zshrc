@@ -82,14 +82,14 @@ alias compliance='~/../../opt/cppcheckpremium/compliance-report'
 alias cppreport='~/Documents/cppcheck/htmlreport/cppcheck-htmlreport'
 alias restore='git diff --name-only | fzf | xargs git restore'
 alias diff='git diff --name-only | fzf | xargs git diff'
-alias nf='cd /home/hastmark/Documents/CFS/software/node-firmware'
-alias cl='cd /home/hastmark/Documents/CFS/software/cfs-imgui-client'
+alias nf='cd /home/hastmark/Documents/Projects/CFS/Software/node-firmware'
+alias cl='cd /home/hastmark/Documents/Projects/CFS/Software/cfs-imgui-client'
 alias fcd='cd $(fzf-folder)'
 
 alias prep='git restore . --patch'
 alias merge='git mergetool --tool=nvimdiff'
 
-PATH="$PATH:/home/hastmark/Documents/CFS/software/node-patcher/bin:/home/hastmark/Documents/projects/fzf-folder/out/src"
+PATH="$PATH:/home/hastmark/Documents/Projects/CFS/Software/node-patcher/bin:/home/hastmark/Documents/Projects/Private/fzf-folder/out/src"
 export PATH="$PATH:/home/hastmark/.local/bin"
 export PATH="$PATH:/home/hastmark/bin"
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -98,6 +98,9 @@ export PATH="/home/hastmark/.pixi/bin:$PATH"
 export PATH="/home/hastmark/Documents/tools/zig/compiler:$PATH"
 export PATH="/home/hastmark/Documents/tools/zig/zls/zig-out/bin:$PATH"
 export PATH="/home/hastmark/.cargo/bin:$PATH"
+# export BROWSER='/usr/bin/chromium'
 eval "$(pixi completion --shell zsh)"
 
 fortune | cowsay
+
+export PATH=$PATH:/home/hastmark/.spicetify

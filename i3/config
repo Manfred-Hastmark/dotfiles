@@ -26,7 +26,7 @@ font pango:monospace 8
 exec --no-startup-id dex --autostart --environment i3
 
 # Set background image
-exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/forrest.png
+exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/haunted-house.png
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -70,7 +70,7 @@ bindsym $mod+s exec spotify
 bindsym $mod+o exec gromit-mpx
 
 # Start webbrowser
-bindsym $mod+m exec chromium
+bindsym $mod+m exec brave-browser
 
 # kill focused window
 bindsym $mod+Shift+q kill
