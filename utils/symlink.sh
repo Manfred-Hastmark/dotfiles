@@ -9,34 +9,18 @@ create_symlink() {
     local dest=""
     local src=""
 
-    # Parse args
-    while [[ $# -gt 0 ]]; do
-        case "$1" in
-            -y|--yes)
-                auto_yes=1
-                shift
-                ;;
-            -*)
-                error "Unknown option: $1"
-                return 1
-                ;;
-            *)
-                if [[ -z "$dest" ]]; then
-                    dest="$1"
-                elif [[ -z "$src" ]]; then
-                    src="$1"
-                else
-                    error "Unexpected argument: $1"
-                    return 1
-                fi
-                shift
-                ;;
-        esac
-    done
+    # Parse arguments
+    local args
+    args=$(parse_auto_yes "$@")
+    read -r dest src <<< "$args"
 
-    # Validate args
-    if [[ -z "$dest" || -z "$src" ]]; then
-        error "Missing arguments. Usage: create_symlink [-y] <destination_path> <source_path>"
+    if [[ -z "$dest" ]]; then
+        error "Missing destination, usage: create_symlink [-y] <destination_path> <source_path>"
+        return 1
+    fi
+
+    if [[ -z "$src" ]]; then
+        error "Missing source, usage: create_symlink [-y] <destination_path> <source_path>"
         return 1
     fi
 
@@ -93,4 +77,3 @@ create_symlink() {
         return 1
     }
 }
-

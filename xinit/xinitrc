@@ -1,2 +1,3 @@
+xrdb -merge ~/.Xresources
 feh --bg-fill "$HOME/Pictures/Wallpapers/wallpaper.png"
 exec i3
