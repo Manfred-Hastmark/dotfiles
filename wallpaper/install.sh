@@ -7,12 +7,11 @@ source "$REPOROOT/utils/tracing.sh"
 #   install_wallpaper [-y]
 install_wallpaper() {
     local url="https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/os/debian-black-4k.png"
-    local file="wallpaper.png"
-    local dest_dir="$HOME/Pictures/Wallpapers"
+    local dest="$HOME/Pictures/Wallpapers/wallpaper.png"
 
 	info "Installing wallpaper..."
-	mkdir -p "$dest_dir"
-	download_file "$dest_dir/$file" $url $1
-	feh --bg-fill "$dest_dir/$file"
+	download_file "$dest" $url $1 || return 1
+	feh --bg-fill "$dest"
 	info "Succesfully installed wallpaper"
+    return 0
 }

@@ -3,11 +3,14 @@
 REPOROOT=$(git rev-parse --show-toplevel)
 
 source $REPOROOT/wallpaper/install.sh
+source $REPOROOT/font/install.sh
+source $REPOROOT/alacritty/install.sh
 source $REPOROOT/bash/install.sh
 source $REPOROOT/nvim/install.sh
 
 auto_yes=$1
-
-install_wallpaper $auto_yes
-install_bash $auto_yes
-install_nvim $auto_yes
+install_wallpaper $auto_yes || exit 1
+install_font $auto_yes || exit 1
+install_alacritty $auto_yes || exit 1
+install_bash $auto_yes || exit 1
+install_nvim $auto_yes || exit 1
