@@ -1,23 +1,21 @@
-#!/bin/bash
-
 source "$REPOROOT/utils/symlink.sh"
 source "$REPOROOT/utils/tracing.sh"
 
-CURRENT_SCRIPT_DIR=$REPOROOT/bash
-BASH_DIR=$HOME/.config/bash
-DEST_DIR="$HOME/Pictures/Wallpapers"
-DEST_PATH="$DEST_DIR/$FILENAME"
-
-# Download and setup wallpaper
+# Install bash configuration
 # Usage:
-#   install_wallpaper [-y]
+#   install_bash [-y]
 install_bash() {
+	local script_dir=$REPOROOT/bash
+	local bash_dir=$HOME/.config/bash
+
 	info "Installing bash configuration..."
-	create_symlink $HOME/.bashrc $CURRENT_SCRIPT_DIR/bashrc.sh $1
+	create_symlink $HOME/.bashrc $script_dir/bashrc.sh $1 || return
 
-	create_symlink $BASH_DIR/utils/tracing.sh $CURRENT_SCRIPT_DIR/utils/tracing.sh $1
-	create_symlink $BASH_DIR/utils/load.sh $CURRENT_SCRIPT_DIR/utils/load.sh $1
+	create_symlink $bash_dir/utils/tracing.sh $script_dir/utils/tracing.sh $1 || return
+	create_symlink $bash_dir/utils/load.sh $script_dir/utils/load.sh $1 || return
 
-	create_symlink $BASH_DIR/configs/bindings.sh $CURRENT_SCRIPT_DIR/configs/bindings.sh $1
+	create_symlink $bash_dir/configs/bindings.sh $script_dir/configs/bindings.sh $1 || return
+	create_symlink $bash_dir/configs/mods.sh $script_dir/configs/mods.sh $1 || return
+
 	info "Succesfully installed bash configuration"
 }

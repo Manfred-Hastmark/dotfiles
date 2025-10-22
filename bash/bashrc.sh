@@ -15,5 +15,6 @@ fi
 source $BASH_UTILS_DIR/load.sh
 
 load_config_file "$BASH_CONFIGS_DIR/bindings.sh" || return
+load_config_file "$BASH_CONFIGS_DIR/mods.sh" || return
 
 info "Welcome!"
