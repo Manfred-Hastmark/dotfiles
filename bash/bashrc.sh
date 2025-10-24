@@ -14,7 +14,9 @@ if [[ ! -e "$BASH_UTILS_DIR/load.sh" ]]; then
 fi
 source $BASH_UTILS_DIR/load.sh
 
-load_config_file "$BASH_CONFIGS_DIR/bindings.sh" || return
-load_config_file "$BASH_CONFIGS_DIR/mods.sh" || return
+load_config_file "$BASH_CONFIGS_DIR/bindings.sh" || return 1
+load_config_file "$BASH_CONFIGS_DIR/mods.sh" || return 1
+load_config_file "$BASH_CONFIGS_DIR/variables.sh" || return 1
+load_config_file "$BASH_CONFIGS_DIR/tmux.sh" || return 1
 
-info "Welcome!"
+feh --bg-scale $HOME/Pictures/Wallpapers/wallpaper.png

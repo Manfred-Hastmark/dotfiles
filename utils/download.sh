@@ -13,20 +13,46 @@ source "$REPOROOT/utils/parse_yes_no.sh"
 #   -y or --yes: automatically overwrite existing files without prompting
 # Download a file to a specified destination
 # Usage:
-#   download_file [-y] <destination_path> <url>
+#   download_file <destination_path> <url> [-y] 
 #   -y or --yes: automatically overwrite existing files without prompting
 
 download_file() {
     local auto_yes=0
     local dest=""
     local url=""
+    local args=()
 
-    # Parse auto_yes and strip it from args
-    local args
-    args=$(parse_auto_yes "$@")
+    # -------------------------------
+    # Parse arguments
+    # -------------------------------
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -y|--yes)
+                auto_yes=1
+                shift
+                ;;
+            --) # end of options
+                shift
+                break
+                ;;
+            -*)
+                echo "Unknown option: $1"
+                return 1
+                ;;
+            *)
+                args+=("$1")
+                shift
+                ;;
+        esac
+    done
 
-    # Parse remaining positional args
-    read -r dest url <<< "$args"
+    # Remaining positional arguments after options
+    # Append any arguments after "--" if present
+    args+=("$@")
+
+    # Assign destination and source
+    dest="${args[0]}"
+    url="${args[1]}"
 
     # Validate args
     if [[ -z "$dest" || -z "$url" ]]; then
@@ -36,8 +62,6 @@ download_file() {
 
     local dir
     dir=$(dirname "$dest")
-
-    # Ensure destination directory exists
     if [[ ! -d "$dir" ]]; then
         info "Creating directory: $dir"
         mkdir -p "$dir" || {

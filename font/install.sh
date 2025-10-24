@@ -9,7 +9,8 @@ install_font() {
     local dest="$HOME/.local/share/fonts/RobotoMono.zip"
 
     info "Installing font..."
-	download_file "$dest" $url $1 || return 1
+	download_file "$dest" "$url" $1 || return 1
     unzip -oq "$dest" -d $(dirname "$dest") || return 1
     info "Installed font"
+    return 0
 }

@@ -10,8 +10,7 @@ install_wallpaper() {
     local dest="$HOME/Pictures/Wallpapers/wallpaper.png"
 
 	info "Installing wallpaper..."
-	download_file "$dest" $url $1 || return 1
-	feh --bg-fill "$dest"
+	download_file "$dest" "$url" $1 || return 1
 	info "Succesfully installed wallpaper"
     return 0
 }

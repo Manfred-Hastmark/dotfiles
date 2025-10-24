@@ -7,21 +7,13 @@
 #   Echoes remaining arguments (without -y/--yes)
 parse_auto_yes() {
     auto_yes=0
-    local args=()
-
+    remaining_args=()  # global array to store non -y/--yes args
     for arg in "$@"; do
         case "$arg" in
-            -y|--yes)
-                auto_yes=1
-                ;;
-            *)
-                args+=("$arg")
-                ;;
+            -y|--yes) auto_yes=1 ;;
+            *) remaining_args+=("$arg") ;;
         esac
     done
-
-    # Output remaining args
-    echo "${args[@]}"
 }
 
 # Parse yes/no user input

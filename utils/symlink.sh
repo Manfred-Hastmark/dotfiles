@@ -8,11 +8,39 @@ create_symlink() {
     local auto_yes=0
     local dest=""
     local src=""
+    local args=()
 
+    # -------------------------------
     # Parse arguments
-    local args
-    args=$(parse_auto_yes "$@")
-    read -r dest src <<< "$args"
+    # -------------------------------
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -y|--yes)
+                auto_yes=1
+                shift
+                ;;
+            --) # end of options
+                shift
+                break
+                ;;
+            -*)
+                echo "Unknown option: $1"
+                return 1
+                ;;
+            *)
+                args+=("$1")
+                shift
+                ;;
+        esac
+    done
+
+    # Remaining positional arguments after options
+    # Append any arguments after "--" if present
+    args+=("$@")
+
+    # Assign destination and source
+    dest="${args[0]}"
+    src="${args[1]}"
 
     if [[ -z "$dest" ]]; then
         error "Missing destination, usage: create_symlink [-y] <destination_path> <source_path>"
@@ -31,7 +59,7 @@ create_symlink() {
 
     # Check if destination exists
     if [[ -e "$dest" || -L "$dest" ]]; then
-        if [[ "$auto_yes" -eq 1 ]]; then
+        if [[ $auto_yes -eq 1 ]]; then
             info "Destination '$dest' exists and will be overwritten (auto yes)."
             rm -rf "$dest" || {
                 error "Failed to remove existing destination: $dest"
