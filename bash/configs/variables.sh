@@ -1,1 +1,1 @@
-export PATH=$PATH:/snap/bin
+export PATH=$PATH:$HOME/.local/bin
