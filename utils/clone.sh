@@ -1,23 +1,15 @@
 source "$REPOROOT/utils/tracing.sh"
 source "$REPOROOT/utils/parse_yes_no.sh"
 
-# Download a file to a destination path
-# Usage: download_file "/path/to/file" "https://example.com/file.png"
-# Download a file to a specified destination
+# Clones a repository to a given directory
 # Usage:
-#   download_file [-y] <destination_path> <url>
-#   -y or --yes: automatically overwrite existing files without prompting
-# Download a file to a specified destination
-# Usage:
-#   download_file <destination_path> <url> [-y] 
-#   -y or --yes: automatically overwrite existing files without prompting
-
-download_file() {
+#   clone_repo [-y] <dest> <url>
+clone_repo() {
     local auto_yes=0
     local dest=""
     local url=""
     local args=()
-
+    
     # -------------------------------
     # Parse arguments
     # -------------------------------
@@ -46,13 +38,13 @@ download_file() {
     # Append any arguments after "--" if present
     args+=("$@")
 
-    # Assign destination and source
+    # Assign destination and url
     dest="${args[0]}"
     url="${args[1]}"
 
     # Validate args
     if [[ -z "$dest" || -z "$url" ]]; then
-        error "Missing arguments. Usage: download_file [-y] <destination_path> <url>"
+        error "Missing arguments. Usage: clone_repo [-y] <destination_path> <url>"
         return 1
     fi
 
@@ -69,9 +61,9 @@ download_file() {
     # Handle existing file
     if [[ -f "$dest" ]]; then
         if [[ "$auto_yes" -eq 1 ]]; then
-            info "File exists at $dest — auto-overwrite enabled."
+            info "$dest exists — auto-overwrite enabled."
         else
-            warn "File already exists: $dest"
+            warn "Path already exists: $dest"
             if ! parse_yes_no "Do you want to overwrite it? (y/n): "; then
                 info "Skipping download."
                 return 0
@@ -80,13 +72,11 @@ download_file() {
         fi
     fi
 
-    # Download the file
-    info "Downloading from $url..."
-    if wget -q --show-progress -O "$dest" "$url"; then
-        info "Downloaded to: $dest"
+    if git clone "$url" "$dest"; then
+        info "Cloned to: $dest"
         return 0
     else
-        error "Failed to download from: $url"
+        error "Failed to clone from: $url"
         return 1
     fi
 }
