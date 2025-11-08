@@ -11,7 +11,6 @@ source "$REPOROOT/utils/parse_yes_no.sh"
 # Usage:
 #   download_file <destination_path> <url> [-y] 
 #   -y or --yes: automatically overwrite existing files without prompting
-
 download_file() {
     local auto_yes=0
     local dest=""

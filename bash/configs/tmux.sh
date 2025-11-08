@@ -161,8 +161,8 @@ create_code_session() {
     local session="$1"
     local dir="$2"
     create_session "$session" "$dir" terminal || return 1
-    create_window terminal "$session" "$dir" nvim
-    create_window editor "$session" "$dir" nvim
+    create_window terminal "$session" "$dir" nvim || return 1
+    create_window editor "$session" "$dir" nvim || return 1
     return 0
 }
 
@@ -172,15 +172,17 @@ create_code_session() {
 create_utils_session() {
     local session="utils"
     create_session "$session" "$HOME" default || return 1
-    create_window default "$session" "$HOME"
-    create_window notes "$session" "$HOME/Documents/notes" nvim
-    create_window calculator "$session" "$HOME" python
+    create_window default "$session" "$HOME" || return 1
+    create_window amazonq "$session" "$HOME" qchat || return 1
+    create_window calculator "$session" "$HOME" python || return 1
+    create_window notes "$session" "$HOME/Documents/notes" nvim || return 1
     return 0
 }
 
 startup() {
     preconditions || return 1
 
+    create_code_session cmake-teensy $HOME/Documents/proj/cfs/cmake-teensy
     create_code_session dotfiles $HOME/Documents/proj/dotfiles
     create_utils_session
 

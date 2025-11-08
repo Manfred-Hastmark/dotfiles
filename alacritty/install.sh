@@ -6,10 +6,10 @@ source "$REPOROOT/utils/tracing.sh"
 #   install_alacritty [-y]
 install_alacritty() {
 	local script_dir=$REPOROOT/alacritty
-	local target_path=$HOME/.config/alacritty/alacritty.toml
+    local config_path="$HOME/.config/alacritty"
 
     info "Installing alacritty configuration..."
-	create_symlink $target_path $script_dir/alacritty.toml $1 || return 1
+	create_symlink $config_path/alacritty.toml $script_dir/alacritty.toml $1 || return 1
     info "Installed alacritty configuration"
     return 0
 }
