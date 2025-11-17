@@ -11,7 +11,11 @@ return {
         vim.lsp.config.bashls = {
             capabilities = capabilities,
         }
+        vim.lsp.config.clangd = {
+            capabilities = capabilities,
+        }
         vim.lsp.enable('lua_ls')
         vim.lsp.enable('bashls')
+        vim.lsp.enable('clangd')
     end,
 }

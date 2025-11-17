@@ -18,6 +18,6 @@ load_config_file "$BASH_CONFIGS_DIR/bindings.sh" || return 1
 load_config_file "$BASH_CONFIGS_DIR/mods.sh" || return 1
 load_config_file "$BASH_CONFIGS_DIR/variables.sh" || return 1
 load_config_file "$BASH_CONFIGS_DIR/tmux.sh" || return 1
+load_config_file "$HOME/.venv/bin/activate" || return 1
 
 feh --bg-scale $HOME/Pictures/Wallpapers/wallpaper.png
-export PATH="/home/hastmark/.pixi/bin:$PATH"
