@@ -4,6 +4,9 @@ return {
         "L3MON4D3/LuaSnip",
     },
     config = function()
+        vim.diagnostic.config({
+            virtual_text = true,
+        })
         local cmp = require("cmp")
         local luasnip = require("luasnip")
         cmp.setup({

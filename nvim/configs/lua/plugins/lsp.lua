@@ -17,5 +17,11 @@ return {
         vim.lsp.enable('lua_ls')
         vim.lsp.enable('bashls')
         vim.lsp.enable('clangd')
+        
+        vim.api.nvim_create_autocmd({"TextChanged", "InsertLeave"}, {
+            callback = function()
+                vim.lsp.buf.format({ async = false })
+            end,
+        })
     end,
 }
