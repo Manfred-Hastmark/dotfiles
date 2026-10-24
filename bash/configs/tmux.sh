@@ -171,9 +171,7 @@ create_code_session() {
 create_utils_session() {
     local session="utils"
     create_session "$session" "$HOME" default || return 1
-    create_window amazonq "$session" "$HOME" qchat || return 1
-    create_window calculator "$session" "$HOME" python || return 1
-    create_window notes "$session" "$HOME/Documents/notes" || return 1
+    create_window editor "$session" "$HOME" || return 1
     return 0
 }
 
@@ -183,9 +181,8 @@ startup() {
     if in_tmux; then
         return 0
     fi
-
-    create_code_session cmake-teensy $HOME/Documents/cfs/cmake-teensy
-    create_code_session learning-rust $HOME/Documents/rust/learning-rust
+    create_code_session computer $HOME/Documents/projects/computer
+    create_code_session cpp-noise $HOME/Documents/projects/cpp-noise
     create_code_session dotfiles $HOME/Documents/dotfiles
     create_utils_session
 

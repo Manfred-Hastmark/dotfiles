@@ -17,6 +17,10 @@ keymap.set("n", "<C-l>", "<C-w>l")
 keymap.set("n", "<C-j>", "<C-w>j")
 keymap.set("n", "<C-k>", "<C-w>k")
 
+keymap.set("n", "<leader>tn", ":tabnew<CR>")
+keymap.set("n", "<leader>tk", ":tabnext<CR>")
+keymap.set("n", "<leader>tj", ":tabprev<CR>")
+
 keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
 keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
 
